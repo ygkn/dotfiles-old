@@ -1,3 +1,19 @@
 [user]
 	email = 2000ygkn0713@gmail.com
-	name = Yugo Yagita
+    name = Yugo Yagita
+
+[core]
+    excludesfile = ~/.gitignore_global
+
+[color]
+    ui = true
+
+[alias]
+    st = status
+    cm = commit
+    cmm = commit -m
+    co = checkout
+    b = branch
+    cb = checkout -b
+    sm = submodule
+    p = push
