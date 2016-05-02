@@ -9,6 +9,7 @@
     ui = true
 
 [alias]
+    a = add
     st = status
     cm = commit
     cmm = commit -m
@@ -17,3 +18,5 @@
     cb = checkout -b
     sm = submodule
     p = push
+[push]
+	default = simple
