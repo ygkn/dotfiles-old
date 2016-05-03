@@ -32,7 +32,6 @@ export EDITOR=/bin/vim
 nvm use default
 npm_dir=${NVM_PATH}_modules
 export NODE_PATH=$npm_dir
-nvm alias default 0.10.0
 
 # -------------------------------------
 # zsh options
