@@ -1,4 +1,5 @@
 set number
+set t_Co=256
 "Tabをスペース4つに展開＆Tabの設定
 set tabstop=4
 set autoindent
@@ -27,47 +28,20 @@ NeoBundle 'kchmck/vim-coffee-script'
 " js BDDツール
 NeoBundle 'claco/jasmine.vim'
 NeoBundle 'Shougo/neocomplcache'
-
+NeoBundle 'itchyny/lightline.vim'
+"" neocomplcache
+NeoBundle 'Shougo/neocomplcache'
 call neobundle#end()
 filetype plugin indent on
 NeoBundleCheck
 
+set laststatus=2
+let g:lightline = {
+      \ 'colorscheme': 'wombat'
+      \ }
+
 " vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
 let g:indent_guides_enable_on_vim_startup = 1
-
-" https://sites.google.com/site/fudist/Home/vim-nihongo-ban/-vimrc-sample
-""""""""""""""""""""""""""""""
-" 挿入モード時、ステータスラインの色を変更
-""""""""""""""""""""""""""""""
-let g:hi_insert = 'highlight StatusLine guifg=darkblue guibg=darkyellow gui=none ctermfg=blue ctermbg=yellow cterm=none'
-
-if has('syntax')
-  augroup InsertHook
-    autocmd!
-    autocmd InsertEnter * call s:StatusLine('Enter')
-    autocmd InsertLeave * call s:StatusLine('Leave')
-  augroup END
-endif
-
-let s:slhlcmd = ''
-function! s:StatusLine(mode)
-  if a:mode == 'Enter'
-    silent! let s:slhlcmd = 'highlight ' . s:GetHighlight('StatusLine')
-    silent exec g:hi_insert
-  else
-    highlight clear StatusLine
-    silent exec s:slhlcmd
-  endif
-endfunction
-
-function! s:GetHighlight(hi)
-  redir => hl
-  exec 'highlight '.a:hi
-  redir END
-  let hl = substitute(hl, '[\r\n]', '', 'g')
-  let hl = substitute(hl, 'xxx', '', '')
-  return hl
-endfunction
 
 """"""""""""""""""""""""""""""
 
@@ -140,8 +114,6 @@ call submode#map('bufmove', 'n', '', '<', '<C-w><')
 call submode#map('bufmove', 'n', '', '+', '<C-w>+')
 call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 
-"" neocomplcache
-NeoBundle 'Shougo/neocomplcache'
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplcache.
