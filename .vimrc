@@ -31,6 +31,15 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'itchyny/lightline.vim'
 "" neocomplcache
 NeoBundle 'Shougo/neocomplcache'
+
+NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'taichouchou2/html5.vim'
+"NeoBundle 'taichouchou2/vim-javascript'
+NeoBundle 'moll/vim-node'
+
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
+
 call neobundle#end()
 filetype plugin indent on
 NeoBundleCheck
