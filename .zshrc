@@ -26,14 +26,6 @@ export EDITOR=/bin/vim
 # export MANPAGER=/usr/local/bin/vimpager
 
 # -------------------------------------
-# node.js
-# -------------------------------------
-[[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh
-nvm use default
-npm_dir=${NVM_PATH}_modules
-export NODE_PATH=$npm_dir
-
-# -------------------------------------
 # zsh options
 # -------------------------------------
 
@@ -125,7 +117,7 @@ NG=":( "
 PROMPT=""
 PROMPT+="%(?.%F{green}$OK%f.%F{red}$NG%f) "
 PROMPT+="
-%n@%m:%."
+%n@%m:%~"
 PROMPT+="$(vcs_prompt_info)"
 PROMPT+=""
 PROMPT+="%% "
@@ -239,3 +231,9 @@ function tmux_automatically_attach_session()
     fi
 }
 tmux_automatically_attach_session
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+export NVM_DIR="/home/ygkn/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
