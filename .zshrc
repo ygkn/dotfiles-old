@@ -8,7 +8,7 @@ SAVEHIST=1000
 
 
 #set path to a directory where there is ithief
-PATH=$PATH:/opt/local/bin
+PATH=$PATH:/opt/local/bin:./node_modules/.bin
 
 # -------------------------------------
 # environment variables

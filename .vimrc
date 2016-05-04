@@ -27,13 +27,9 @@ NeoBundle 'kana/vim-submode'
 NeoBundle 'kchmck/vim-coffee-script'
 " js BDDツール
 NeoBundle 'claco/jasmine.vim'
-NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'itchyny/lightline.vim'
-"" neocomplcache
-NeoBundle 'Shougo/neocomplcache'
 
 NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'taichouchou2/html5.vim'
 "NeoBundle 'taichouchou2/vim-javascript'
 NeoBundle 'moll/vim-node'
 
@@ -43,6 +39,59 @@ NeoBundle 'Shougo/neosnippet-snippets'
 call neobundle#end()
 filetype plugin indent on
 NeoBundleCheck
+
+" tab through emmet fields
+function! s:move_to_next_emmet_area(direction)
+  " go to next item in a popup menu
+  if pumvisible()
+    if (a:direction == 0)
+      return "\<C-p>"
+    else
+      return "\<C-n>"
+    endif
+  endif
+
+  " try to determine if we're within quotes or angle brackets.
+  " if so, assume we're in an emmet fill area.
+  let line = getline('.')
+  if col('.') < len(line)
+    let line = matchstr(line, '[">][^<"]*\%'.col('.').'c[^>"]*[<"]')
+
+    if len(line) >= 2
+      if (a:direction == 0)
+        return "\<Plug>(emmet-move-prev)"
+      else
+        return "\<Plug>(emmet-move-next)"
+      endif
+    endif
+  endif
+
+  " return a regular tab character
+  return "\<tab>"
+endfunction
+
+" expand an emmet sequence like ul>li*5
+function! s:expand_emmet_sequence()
+  " first try to expand any neosnippets
+  if neosnippet#expandable_or_jumpable()
+    return "\<Plug>(neosnippet_expand_or_jump)"
+  endif
+
+  " expand anything emmet thinks is expandable
+  if emmet#isExpandable()
+    return "\<Plug>(emmet-expand-abbr)"
+  endif
+endfun
+
+" using <C-s> requires a line in .bashrc/.zshrc/etc. to prevent
+" linux terminal driver from freezing the terminal on ctrl-s:
+"     stty -ixon -ixoff
+" see: http://unix.stackexchange.com/questions/12107/how-to-unfreeze-after-accidentally-pressing-ctrl-s-in-a-terminal#12108
+" also: http://stackoverflow.com/questions/6429515/stty-hupcl-ixon-ixoff
+autocmd FileType html,hbs,handlebars,css,scss imap <buffer><expr><C-s> <sid>expand_emmet_sequence()
+autocmd FileType html,hbs,handlebars,css,scss imap <buffer><expr><S-TAB> <sid>move_to_next_emmet_area(0)
+autocmd FileType html,hbs,handlebars,css,scss imap <buffer><expr><TAB> <sid>move_to_next_emmet_area(1)
+
 
 set laststatus=2
 let g:lightline = {
@@ -77,14 +126,12 @@ set hlsearch
 
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
-autocmd FileType html imap <buffer><expr><tab>
-    \ emmet#isExpandable() ? "\<plug>(emmet-expand-abbr)" :
-    \ "\<tab>"
-
 " vimにcoffeeファイルタイプを認識させる
 au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
 " インデントを設定
 autocmd FileType coffee     setlocal sw=2 sts=2 ts=2 et
+
+nnoremap <F3> :noh<CR>
 
 " Tab & Window関連
 nnoremap s <Nop>
@@ -123,35 +170,3 @@ call submode#map('bufmove', 'n', '', '<', '<C-w><')
 call submode#map('bufmove', 'n', '', '+', '<C-w>+')
 call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplcache_dictionary_filetype_lists = {
-    \ 'default' : ''
-    \ }
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplcache#undo_completion()
-inoremap <expr><C-l>     neocomplcache#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplcache#smart_close_popup() . "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
