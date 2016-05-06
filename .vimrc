@@ -32,6 +32,9 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 "NeoBundle 'taichouchou2/vim-javascript'
 NeoBundle 'moll/vim-node'
+NeoBundle "Shougo/neocomplete.vim"
+NeoBundle "kana/vim-smartinput"
+NeoBundle "cohama/vim-smartinput-endwise"
 
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
@@ -40,76 +43,47 @@ call neobundle#end()
 filetype plugin indent on
 NeoBundleCheck
 
-" tab through emmet fields
-function! s:move_to_next_emmet_area(direction)
-  " go to next item in a popup menu
-  if pumvisible()
-    if (a:direction == 0)
-      return "\<C-p>"
-    else
-      return "\<C-n>"
-    endif
-  endif
+call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)',
+      \                        '<BS>',
+      \                        '<BS>')
+call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-h)',
+      \                        '<BS>',
+      \                        '<C-h>')
+call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)',
+      \                        '<Enter>',
+      \                        '<Enter>')
 
-  " try to determine if we're within quotes or angle brackets.
-  " if so, assume we're in an emmet fill area.
-  let line = getline('.')
-  if col('.') < len(line)
-    let line = matchstr(line, '[">][^<"]*\%'.col('.').'c[^>"]*[<"]')
+" <BS> で閉じて文字削除
+imap <expr> <BS>
+      \ neocomplete#smart_close_popup() . "\<Plug>(smartinput_BS)"
+" <C-h> で閉じる
+imap <expr> <C-h>
+      \ neocomplete#smart_close_popup()
+" <CR> で候補を選択し改行する
+" ポップアップがないときには改行する
+imap <expr> <CR> pumvisible() ?
+      \ neocomplete#close_popup() : "\<Plug>(smartinput_CR)"
 
-    if len(line) >= 2
-      if (a:direction == 0)
-        return "\<Plug>(emmet-move-prev)"
-      else
-        return "\<Plug>(emmet-move-next)"
-      endif
-    endif
-  endif
-
-  " return a regular tab character
-  return "\<tab>"
-endfunction
-
-" expand an emmet sequence like ul>li*5
-function! s:expand_emmet_sequence()
-  " first try to expand any neosnippets
-  if neosnippet#expandable_or_jumpable()
-    return "\<Plug>(neosnippet_expand_or_jump)"
-  endif
-
-  " expand anything emmet thinks is expandable
-  if emmet#isExpandable()
-    return "\<Plug>(emmet-expand-abbr)"
-  endif
-endfun
-
-" using <C-s> requires a line in .bashrc/.zshrc/etc. to prevent
-" linux terminal driver from freezing the terminal on ctrl-s:
-"     stty -ixon -ixoff
-" see: http://unix.stackexchange.com/questions/12107/how-to-unfreeze-after-accidentally-pressing-ctrl-s-in-a-terminal#12108
-" also: http://stackoverflow.com/questions/6429515/stty-hupcl-ixon-ixoff
-autocmd FileType html,hbs,handlebars,css,scss imap <buffer><expr><C-s> <sid>expand_emmet_sequence()
-autocmd FileType html,hbs,handlebars,css,scss imap <buffer><expr><S-TAB> <sid>move_to_next_emmet_area(0)
-autocmd FileType html,hbs,handlebars,css,scss imap <buffer><expr><TAB> <sid>move_to_next_emmet_area(1)
-
+call smartinput_endwise#define_default_rules()
 
 set laststatus=2
 let g:lightline = {
       \ 'colorscheme': 'wombat'
       \ }
 
-" vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
-let g:indent_guides_enable_on_vim_startup = 1
-
-""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""
-" 自動的に閉じ括弧を入力
-""""""""""""""""""""""""""""""
-imap { {}<LEFT>
-imap [ []<LEFT>
-imap ( ()<LEFT>
-""""""""""""""""""""""""""""""
+" vim-indent-guides
+" Vim 起動時 vim-indent-guides を自動起動
+let g:indent_guides_enable_on_vim_startup=1
+" ガイドをスタートするインデントの量
+let g:indent_guides_start_level=2
+" 自動カラー無効
+let g:indent_guides_auto_colors=0
+" 奇数番目のインデントの色
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#444433 ctermbg=black
+" 偶数番目のインデントの色
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#333344 ctermbg=darkgray
+" ガイドの幅
+let g:indent_guides_guide_size = 1
 
 " カーソルが何行目の何列目に置かれているかを表示する
 set ruler
@@ -126,12 +100,14 @@ set hlsearch
 
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
+autocmd FileType html imap <buffer><expr><tab>
+    \ emmet#isExpandable() ? "\<plug>(emmet-expand-abbr)" :
+    \ "\<tab>"
+
 " vimにcoffeeファイルタイプを認識させる
 au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
 " インデントを設定
 autocmd FileType coffee     setlocal sw=2 sts=2 ts=2 et
-
-nnoremap <F3> :noh<CR>
 
 " Tab & Window関連
 nnoremap s <Nop>
