@@ -1,4 +1,7 @@
-vimfiles/
-.DS_Store
-*~
-*.swp
+*
+!.gitconfig
+!.gitignore
+!.gitignore_global
+!.tmux.conf
+!.vimrc
+!.zshrc  
