@@ -53,6 +53,17 @@ call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)',
       \                        '<Enter>',
       \                        '<Enter>')
 
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_ignore_case = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#enable_enable_camel_case_completion = 0
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns._ = '\h\w*'
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
 " <BS> で閉じて文字削除
 imap <expr> <BS>
       \ neocomplete#smart_close_popup() . "\<Plug>(smartinput_BS)"
