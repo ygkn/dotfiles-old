@@ -19,7 +19,7 @@ export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 # エディタ
-export EDITOR=/bin/vim
+export EDITOR=/usr/bin/vim
 
 # ページャ
 # export PAGER=/usr/local/bin/vimpager
@@ -120,7 +120,8 @@ PROMPT+="
 %n@%m:%~"
 PROMPT+="$(vcs_prompt_info)"
 PROMPT+=""
-PROMPT+="%% "
+PROMPT+="
+ %% "
 
 RPROMPT="[%*]"
 
