@@ -234,3 +234,6 @@ eval "$(rbenv init -)"
 
 export NVM_DIR="/home/ygkn/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+
+alias g='git add . ; git commit ; git push'
