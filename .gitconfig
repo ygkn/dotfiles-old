@@ -1,10 +1,10 @@
 [user]
-	email = 2000ygkn0713@gmail.com
+    email = 2000ygkn0713@gmail.com
     name = Yugo Yagita
 
 [core]
     excludesfile = ~/.gitignore_global
-    editor = vim -c "set fenc=utf-8"
+    editor = vim
 
 [color]
     ui = true
