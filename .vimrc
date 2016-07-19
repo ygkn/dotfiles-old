@@ -1,12 +1,12 @@
 set number
 set t_Co=256
-"Tabをスペース4つに展開＆Tabの設定
-set tabstop=4
+"Tabをスペース2つに展開＆Tabの設定
+set tabstop=2
 set autoindent
 " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 set smartindent
 set expandtab
-set shiftwidth=4
+set shiftwidth=2
 set nocompatible
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
