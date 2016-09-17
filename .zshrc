@@ -29,9 +29,6 @@ export EDITOR=/usr/bin/vim
 # zsh options
 # -------------------------------------
 
-## 補完機能の強化
-autoload -U compinit
-compinit
 
 ## 入力しているコマンド名が間違っている場合にもしかして：を出す。
 setopt correct
