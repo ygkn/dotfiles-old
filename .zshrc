@@ -59,8 +59,8 @@ setopt auto_pushd
 setopt auto_cd
 
 #先方予測機能
-autoload predict-on
-predict-on
+#autoload predict-on
+#predict-on
 
 # -------------------------------------
 # path
@@ -235,3 +235,7 @@ export NVM_DIR="/home/ygkn/.nvm"
 
 alias g='git add . ; git commit'
 alias gp='git add . ; git commit ; git push'
+export TERM=xterm-256color
+
+alias fuck='eval $(thefuck $(fc -ln -1))'
+eval $(thefuck --alias)
