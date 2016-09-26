@@ -233,8 +233,8 @@ export NVM_DIR="/home/ygkn/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 
-alias g='git add . ; git commit'
-alias gp='git add . ; git commit ; git push'
+alias g='git add . ; git commit -v'
+alias gp='git add . ; git commit -v ; git push'
 export TERM=xterm-256color
 
 alias fuck='eval $(thefuck $(fc -ln -1))'
