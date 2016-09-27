@@ -54,3 +54,6 @@ repo = 'Shougo/neosnippet'
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'miyakogi/seiya.vim'
