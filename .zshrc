@@ -239,3 +239,5 @@ export TERM=xterm-256color
 
 alias fuck='eval $(thefuck $(fc -ln -1))'
 eval $(thefuck --alias)
+
+alias pbcopy='xsel --clipboard --input'
