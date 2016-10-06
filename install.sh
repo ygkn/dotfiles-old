@@ -5,7 +5,14 @@ ppa:neovim-ppa/unstable
 ppa:japaneseteam/ppa
 EOS
 apps=$(cat) << EOS
+nemo-audio-tab
+nemo-compare
+nemo-image-converter
+nemo-pastebin
+nemo-terminal
+asunder
 vlc
+lame
 shutter
 nemo
 launchy
