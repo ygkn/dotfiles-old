@@ -5,6 +5,7 @@ ppa:neovim-ppa/unstable
 ppa:japaneseteam/ppa
 EOS
 apps=$(cat) << EOS
+eyed3
 nemo-audio-tab
 nemo-compare
 nemo-image-converter
