@@ -1,6 +1,6 @@
 #!/bin/bash
 ppas=$(cat) << EOS
-ppa:agornostal/ulauncher
+ppa:nilarimogard/webupd8
 ppa:neovim-ppa/unstable
 ppa:japaneseteam/ppa
 EOS
@@ -16,7 +16,6 @@ vlc
 lame
 shutter
 nemo
-launchy
 software-properties-common
 python-software-properties
 gnome-sushi
@@ -41,7 +40,7 @@ xsel
 build-essential
 libssl-dev
 neovim
-ulauncher
+albert
 EOS
 downloadurls=$(cat) << EOS
 http://hluk.github.io/CopyQ/

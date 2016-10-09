@@ -84,6 +84,7 @@ autoload -U promptinit; promptinit
 autoload -Uz colors; colors
 autoload -Uz vcs_info
 autoload -Uz is-at-least
+setopt prompt_subst
 
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
