@@ -228,3 +228,4 @@ alias fuck='eval $(thefuck $(fc -ln -1))'
 eval $(thefuck --alias)
 
 alias pbcopy='xsel --clipboard --input'
+alias openhtml='browser-sync start --server --files "**/*" --port 8082'
