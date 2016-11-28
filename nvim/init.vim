@@ -58,40 +58,9 @@ if dein#check_install()
   call dein#install()
 endif
 
-
-call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)',
-      \                        '<BS>',
-      \                        '<BS>')
-call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-h)',
-      \                        '<BS>',
-      \                        '<C-h>')
-call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)',
-      \                        '<Enter>',
-      \                        '<Enter>')
+let g:deoplete#enable_at_startup = 1
 
 let g:seiya_auto_enable=1
-
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_ignore_case = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#enable_auto_select = 1
-let g:deoplete#enable_enable_camel_case_completion = 0
-if !exists('g:deoplete#keyword_patterns')
-    let g:deoplete#keyword_patterns = {}
-endif
-let g:deoplete#keyword_patterns._ = '\h\w*'
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-" <BS> で閉じて文字削除
-imap <expr> <BS>
-      \ deoplete#smart_close_popup() . "\<Plug>(smartinput_BS)"
-" <C-h> で閉じる
-imap <expr> <C-h>
-      \ deoplete#smart_close_popup()
-" <CR> で候補を選択し改行する
-" ポップアップがないときには改行する
-imap <expr> <CR> pumvisible() ?
-      \ deoplete#close_popup() : "\<Plug>(smartinput_CR)"
 
 call smartinput_endwise#define_default_rules()
 

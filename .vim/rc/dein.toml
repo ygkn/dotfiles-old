@@ -2,7 +2,10 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo = 'scrooloose/syntastic'

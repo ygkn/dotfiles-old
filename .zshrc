@@ -226,3 +226,4 @@ export TERM=xterm-256color
 
 alias pbcopy='xsel --clipboard --input'
 alias openhtml='browser-sync start --server --files "**/*" --port 8082'
+mkcd(){mkdir -p "$@" && eval cd "\"\$$#\"";}
