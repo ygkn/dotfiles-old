@@ -58,8 +58,6 @@ if dein#check_install()
   call dein#install()
 endif
 
-let g:deoplete#enable_at_startup = 1
-
 let g:seiya_auto_enable=1
 
 call smartinput_endwise#define_default_rules()
@@ -68,6 +66,8 @@ set laststatus=2
 let g:lightline = {
       \ 'colorscheme': 'wombat'
       \ }
+
+let g:deoplete#enable_at_startup = 1
 
 " vim-indent-guides
 " Vim 起動時 vim-indent-guides を自動起動

@@ -2,9 +2,6 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'tpope/vim-fugitive'
-
-[[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
@@ -20,16 +17,7 @@ repo = 'scrooloose/nerdtree'
 repo = 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 [[plugins]]
-repo = 'Townk/vim-autoclose'
-
-[[plugins]]
 repo = 'mattn/emmet-vim'
-
-[[plugins]]
-repo = 'tpope/vim-endwise'
-
-[[plugins]]
-repo = 'tomtom/tcomment_vim'
 
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
@@ -39,9 +27,6 @@ repo = 'kana/vim-submode'
 
 [[plugins]]
 repo = 'kchmck/vim-coffee-script'
-
-[[plugins]]
-repo = 'claco/jasmine.vim'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
