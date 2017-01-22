@@ -51,3 +51,13 @@ repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo = 'miyakogi/seiya.vim'
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+
+[[plugins]]
+repo = 'kannokanno/previm'
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+

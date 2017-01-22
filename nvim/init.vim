@@ -9,6 +9,7 @@ set smartindent
 set expandtab
 set shiftwidth=2
 set nocompatible
+set termguicolors
 
 " カーソルが何行目の何列目に置かれているかを表示する
 set ruler
@@ -59,6 +60,7 @@ if dein#check_install()
 endif
 
 let g:seiya_auto_enable=1
+let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
 
 call smartinput_endwise#define_default_rules()
 
@@ -160,3 +162,6 @@ call submode#map('bufmove', 'n', '', '+', '<C-w>+')
 call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 
 nnoremap <F3> :noh<CR>
+
+au BufRead,BufNewFile *.md set filetype=markdown
+let g:previm_open_cmd = 'xdg-open'

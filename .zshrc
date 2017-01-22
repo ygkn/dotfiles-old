@@ -169,7 +169,7 @@ function tmux_automatically_attach_session()
         ! is_exists 'tmux' && return 1
 
         if is_tmux_runnning; then
-          echo "New Tmux Screen"
+          echo "Hello."
         elif is_screen_running; then
             echo "This is on screen."
         fi
@@ -220,10 +220,28 @@ export NVM_DIR="/home/ygkn/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 
-alias g='git add . ; git commit -v'
-alias gp='git add . ; git commit -v ; git push'
-export TERM=xterm-256color
+alias g='git add -A ; git commit -v'
+alias gp='git add -A ; git commit -v ; git push'
+
+export TERM="screen-256color"
 
 alias pbcopy='xsel --clipboard --input'
 alias openhtml='browser-sync start --server --files "**/*" --port 8082'
 mkcd(){mkdir -p "$@" && eval cd "\"\$$#\"";}
+
+alias gls='git branch'
+alias gcd='git checkout'
+alias gmk='git branch'
+alias grm='git branch -d'
+alias gmv='git branch -m'
+alias gmg='git merge'
+alias v='vim'
+alias y='yarn'
+
+fpath=(~/.zsh/completion $fpath)
+
+autoload -U compinit
+compinit -u
+source ~/.zsh/completion/git-flow-completion.zsh 
+
+alias :e='vim'
