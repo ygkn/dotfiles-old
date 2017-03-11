@@ -11,6 +11,28 @@ set shiftwidth=2
 set nocompatible
 set termguicolors
 
+set matchtime=3
+
+set matchpairs& matchpairs+=<:>
+
+" バックスペースでなんでも消せるようにする
+set backspace=indent,eol,start
+
+set nowritebackup
+set nobackup
+set noswapfile
+
+" j, k による移動を折り返されたテキストでも自然に振る舞うように変更
+nnoremap j gj
+nnoremap k gk
+
+" vを二回で行末まで選択
+vnoremap v $h
+
+" w!! でスーパーユーザーとして保存（sudoが使える環境限定）
+cmap w!! w !sudo tee > /dev/null %
+
+
 " カーソルが何行目の何列目に置かれているかを表示する
 set ruler
 
@@ -21,6 +43,8 @@ set wildmenu
 
 " 検索結果をハイライト表示する
 set hlsearch
+
+set clipboard=unnamed,unnamedplus
 
 " プラグインが実際にインストールされるディレクトリ
 let s:dein_dir = expand('~/.cache/dein')
@@ -61,6 +85,9 @@ endif
 
 let g:seiya_auto_enable=1
 let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
+
+let g:vim_json_syntax_conceal = 0
+let g:vim_markdown_conceal = 0
 
 call smartinput_endwise#define_default_rules()
 
@@ -165,3 +192,5 @@ nnoremap <F3> :noh<CR>
 
 au BufRead,BufNewFile *.md set filetype=markdown
 let g:previm_open_cmd = 'xdg-open'
+
+

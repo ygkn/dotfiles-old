@@ -226,7 +226,7 @@ alias gp='git add -A ; git commit -v ; git push'
 export TERM="screen-256color"
 
 alias pbcopy='xsel --clipboard --input'
-alias openhtml='browser-sync start --server --files "**/*" --port 8082'
+alias bs='browser-sync start --server --files "**/*"'
 mkcd(){mkdir -p "$@" && eval cd "\"\$$#\"";}
 
 alias gls='git branch'

@@ -12,8 +12,9 @@
 
 [alias]
     a = add
+    ap = add -p
     st = status
-    cm = commit
+    cm = commit -v
     cmm = commit -m
     co = checkout
     b = branch

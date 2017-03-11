@@ -5,7 +5,7 @@ ppa:neovim-ppa/unstable
 ppa:japaneseteam/ppa
 EOS
 apps=$(cat) << EOS
-eyed3
+gufw
 nemo-audio-tab
 nemo-compare
 nemo-image-converter
@@ -45,14 +45,12 @@ EOS
 downloadurls=$(cat) << EOS
 http://hluk.github.io/CopyQ/
 https://www.google.co.jp/chrome/browser/desktop/index.html
+http://brackets.io
+http://qiita.com/ygkn/items/94171310be7f0115c764
 EOS
 
 
 exeRoot(){
-  for url in $downloadurls; do
-    xdg-open $urls
-  done
-
 # Install
   apt update
   apt upgrade
@@ -104,4 +102,8 @@ git clone git@github.com:ygkn/dotfiles.git
 cd dotfiles
 ln -s $(pwd)/.* ~
 ln -s $(pwd)/nvim ~/.config/nvim
+
+for url in $downloadurls; do
+  xdg-open $urls
+done
 
