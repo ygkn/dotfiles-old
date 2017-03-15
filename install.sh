@@ -94,6 +94,8 @@ exeRoot(){
   ln -sf /usr/local/bin/node /usr/bin/node
   node -v
   apt purge -y nodejs npm
+
+  ./zsh-install.sh
 }
 
 sudo exeRoot
@@ -120,7 +122,11 @@ LANG=C xdg-user-dirs-gtk-update
 # dotfiles
 git clone git@github.com:ygkn/dotfiles.git
 cd dotfiles
-ln -s $(pwd)/.* ~
+ln -s $(pwd)/.gitconfig ~
+ln -s $(pwd)/.gitignore_global ~
+ln -s $(pwd)/.tmux.conf ~
+ln -s $(pwd)/.zshrc ~
+ln -s $(pwd)/.vim ~
 ln -s $(pwd)/nvim ~/.config/nvim
 
 for url in $downloadurls; do
