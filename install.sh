@@ -1,10 +1,26 @@
 #!/bin/bash
 ppas=$(cat) << EOS
+ppa:ubuntu-desktop/ubuntu-make
 ppa:nilarimogard/webupd8
 ppa:neovim-ppa/unstable
 ppa:japaneseteam/ppa
+ppa:budgie-remix/ppa
+ppa:peek-developers/stable
+ppa:kazam-team/unstable-series
 EOS
 apps=$(cat) << EOS
+kazam
+peek
+budgie-core
+budgie-desktop
+budgie-indicator-applet
+budgie-lightdm-theme
+budgie-remix-lightdm-theme
+budgie-screenshot-applet
+budgie-wallpapers
+budgie-wallpapers-xenial
+budgie-welcome
+ubuntu-make
 gufw
 nemo-audio-tab
 nemo-compare
@@ -12,6 +28,7 @@ nemo-image-converter
 nemo-pastebin
 nemo-terminal
 asunder
+audacity
 vlc
 lame
 shutter
@@ -41,12 +58,15 @@ build-essential
 libssl-dev
 neovim
 albert
+dconf-editor
+kdenlive
 EOS
 downloadurls=$(cat) << EOS
 http://hluk.github.io/CopyQ/
 https://www.google.co.jp/chrome/browser/desktop/index.html
 http://brackets.io
 http://qiita.com/ygkn/items/94171310be7f0115c764
+https://slack.com/downloads/linux
 EOS
 
 
