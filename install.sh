@@ -3,6 +3,7 @@ ppas=`cat << EOS
 ppa:ubuntu-desktop/ubuntu-make
 ppa:nilarimogard/webupd8
 ppa:neovim-ppa/unstable
+ppa:dawidd0811/neofetch
 ppa:japaneseteam/ppa
 ppa:budgie-remix/ppa
 ppa:peek-developers/stable
@@ -18,6 +19,7 @@ kazam
 brackets
 copyq
 peek
+neofetch
 budgie-core
 budgie-desktop
 budgie-indicator-applet
