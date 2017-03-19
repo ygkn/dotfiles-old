@@ -146,3 +146,7 @@ sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/
 sudo apt-get update && sudo apt-get install arc-theme
 wget http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key
 sudo apt-key add - < Release.key
+
+xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
+gsettings set org.gnome.desktop.background show-desktop-icons false
+gsettings set org.nemo.desktop show-desktop-icons true
