@@ -7,7 +7,7 @@ fi
 apt-get install zsh
 
 echo "Please type to use shell." 
-cat /etc/shells
+which zsh
 
 chsh
 
