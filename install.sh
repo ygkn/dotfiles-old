@@ -8,9 +8,11 @@ ppa:budgie-remix/ppa
 ppa:peek-developers/stable
 ppa:kazam-team/unstable-series
 ppa:hluk/copyq
+ppa:webupd8team/brackets
 EOS`
 apps=`cat << EOS
 kazam
+brackets
 copyq
 peek
 budgie-core
@@ -64,9 +66,7 @@ dconf-editor
 kdenlive
 EOS`
 downloadurls=`cat << EOS
-http://hluk.github.io/CopyQ/
 https://www.google.co.jp/chrome/browser/desktop/index.html
-http://brackets.io
 http://qiita.com/ygkn/items/94171310be7f0115c764
 https://slack.com/downloads/linux
 EOS`
