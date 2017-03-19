@@ -1,5 +1,5 @@
 #!/bin/bash
-ppas=$(cat) << EOS
+ppas=`cat << EOS
 ppa:ubuntu-desktop/ubuntu-make
 ppa:nilarimogard/webupd8
 ppa:neovim-ppa/unstable
@@ -8,8 +8,8 @@ ppa:budgie-remix/ppa
 ppa:peek-developers/stable
 ppa:kazam-team/unstable-series
 ppa:hluk/copyq
-EOS
-apps=$(cat) << EOS
+EOS`
+apps=`cat << EOS
 kazam
 copyq
 peek
@@ -62,14 +62,14 @@ neovim
 albert
 dconf-editor
 kdenlive
-EOS
-downloadurls=$(cat) << EOS
+EOS`
+downloadurls=`cat << EOS
 http://hluk.github.io/CopyQ/
 https://www.google.co.jp/chrome/browser/desktop/index.html
 http://brackets.io
 http://qiita.com/ygkn/items/94171310be7f0115c764
 https://slack.com/downloads/linux
-EOS
+EOS`
 
 
 exeRoot(){
