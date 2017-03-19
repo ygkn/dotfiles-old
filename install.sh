@@ -11,6 +11,7 @@ ppa:hluk/copyq
 ppa:webupd8team/brackets
 EOS`
 apps=`cat << EOS
+gparted
 kazam
 brackets
 copyq
