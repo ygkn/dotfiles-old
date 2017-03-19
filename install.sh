@@ -6,11 +6,13 @@ ppa:neovim-ppa/unstable
 ppa:japaneseteam/ppa
 ppa:budgie-remix/ppa
 ppa:peek-developers/stable
+ppa:papirus/papirus
 ppa:kazam-team/unstable-series
 ppa:hluk/copyq
 ppa:webupd8team/brackets
 EOS`
 apps=`cat << EOS
+papirus-icon-theme
 gparted
 kazam
 brackets
@@ -136,3 +138,9 @@ for url in $downloadurls; do
   xdg-open $urls
 done
 
+# Theme
+sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
+
+sudo apt-get update && sudo apt-get install arc-theme
+wget http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key
+sudo apt-key add - < Release.key
