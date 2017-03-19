@@ -135,6 +135,7 @@ ln -s $(pwd)/.gitignore_global ~
 ln -s $(pwd)/.tmux.conf ~
 ln -s $(pwd)/.zshrc ~
 ln -s $(pwd)/.vim ~
+ln -s $(pwd)/.git-flow-completion.zsh ~
 ln -s $(pwd)/nvim ~/.config/nvim
 
 for url in $downloadurls; do

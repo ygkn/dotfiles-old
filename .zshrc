@@ -242,6 +242,6 @@ fpath=(~/.zsh/completion $fpath)
 
 autoload -U compinit
 compinit -u
-source ~/.zsh/completion/git-flow-completion.zsh 
+source .git-flow-completion.zsh
 
 alias :e='vim'
