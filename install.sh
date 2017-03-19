@@ -7,9 +7,11 @@ ppa:japaneseteam/ppa
 ppa:budgie-remix/ppa
 ppa:peek-developers/stable
 ppa:kazam-team/unstable-series
+ppa:hluk/copyq
 EOS
 apps=$(cat) << EOS
 kazam
+copyq
 peek
 budgie-core
 budgie-desktop
