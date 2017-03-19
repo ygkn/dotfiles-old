@@ -22,6 +22,7 @@ peek
 neofetch
 budgie-core
 budgie-desktop
+curl
 budgie-indicator-applet
 budgie-lightdm-theme
 budgie-remix-lightdm-theme
