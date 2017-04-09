@@ -66,3 +66,6 @@ repo = 'digitaltoad/vim-pug'
 
 [[plugins]]
 repo = 'elzr/vim-json'
+
+[[plugins]]
+repo = 'jelera/vim-javascript-syntax'
