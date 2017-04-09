@@ -1,18 +1,28 @@
 #!/bin/bash
-ppas=$(cat) << EOS
+ppas=`cat << EOS
 ppa:ubuntu-desktop/ubuntu-make
 ppa:nilarimogard/webupd8
 ppa:neovim-ppa/unstable
+ppa:dawidd0811/neofetch
 ppa:japaneseteam/ppa
 ppa:budgie-remix/ppa
 ppa:peek-developers/stable
+ppa:papirus/papirus
 ppa:kazam-team/unstable-series
-EOS
-apps=$(cat) << EOS
+ppa:hluk/copyq
+ppa:webupd8team/brackets
+EOS`
+apps=`cat << EOS
+papirus-icon-theme
+gparted
 kazam
+brackets
+copyq
 peek
+neofetch
 budgie-core
 budgie-desktop
+curl
 budgie-indicator-applet
 budgie-lightdm-theme
 budgie-remix-lightdm-theme
@@ -60,14 +70,12 @@ neovim
 albert
 dconf-editor
 kdenlive
-EOS
-downloadurls=$(cat) << EOS
-http://hluk.github.io/CopyQ/
+EOS`
+downloadurls=`cat << EOS
 https://www.google.co.jp/chrome/browser/desktop/index.html
-http://brackets.io
 http://qiita.com/ygkn/items/94171310be7f0115c764
 https://slack.com/downloads/linux
-EOS
+EOS`
 
 
 exeRoot(){
@@ -114,6 +122,8 @@ update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
 update-alternatives --config editor
 
 pip3 install neovim
+pip2 install --user neovim
+pip3 install --user neovim
 
 # commands
 LANG=C xdg-user-dirs-gtk-update
@@ -127,9 +137,20 @@ ln -s $(pwd)/.gitignore_global ~
 ln -s $(pwd)/.tmux.conf ~
 ln -s $(pwd)/.zshrc ~
 ln -s $(pwd)/.vim ~
+ln -s $(pwd)/.git-flow-completion.zsh ~
 ln -s $(pwd)/nvim ~/.config/nvim
 
 for url in $downloadurls; do
   xdg-open $urls
 done
 
+# Theme
+sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
+
+sudo apt-get update && sudo apt-get install arc-theme
+wget http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key
+sudo apt-key add - < Release.key
+
+xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
+gsettings set org.gnome.desktop.background show-desktop-icons false
+gsettings set org.nemo.desktop show-desktop-icons true
