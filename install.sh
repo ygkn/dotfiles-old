@@ -122,6 +122,8 @@ update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
 update-alternatives --config editor
 
 pip3 install neovim
+pip2 install --user neovim
+pip3 install --user neovim
 
 # commands
 LANG=C xdg-user-dirs-gtk-update
