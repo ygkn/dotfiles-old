@@ -13,6 +13,7 @@ ppa:hluk/copyq
 ppa:webupd8team/brackets
 EOS`
 apps=`cat << EOS
+handbreak
 papirus-icon-theme
 gparted
 kazam
