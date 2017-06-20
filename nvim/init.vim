@@ -96,7 +96,7 @@ let g:lightline = {
       \ 'colorscheme': 'wombat'
       \ }
 
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
 
 " vim-indent-guides
 " Vim 起動時 vim-indent-guides を自動起動

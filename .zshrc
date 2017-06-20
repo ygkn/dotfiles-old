@@ -225,7 +225,7 @@ alias gp='git add -A ; git commit -v ; git push'
 
 export TERM="screen-256color"
 
-alias pbcopy='xsel --clipboard --input'
+alias copy='xsel --clipboard --input'
 alias bs='browser-sync start --server --files "**/*"'
 mkcd(){mkdir -p "$@" && eval cd "\"\$$#\"";}
 
@@ -242,6 +242,7 @@ fpath=(~/.zsh/completion $fpath)
 
 autoload -U compinit
 compinit -u
-source .git-flow-completion.zsh
+source ~/.git-flow-completion.zsh
 
 alias :e='vim'
+alias ys='yarn start'
