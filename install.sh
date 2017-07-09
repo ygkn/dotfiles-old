@@ -11,6 +11,7 @@ ppa:papirus/papirus
 ppa:kazam-team/unstable-series
 ppa:hluk/copyq
 ppa:webupd8team/brackets
+ppa:stebbins/handbrake-releases
 EOS`
 apps=`cat << EOS
 handbreak
