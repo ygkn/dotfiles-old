@@ -2,7 +2,7 @@
 ppas=`cat << EOS
 ppa:ubuntu-desktop/ubuntu-make
 ppa:nilarimogard/webupd8
-ppa:neovim-ppa/unstable
+ppa:neovim-ppa/stable
 ppa:dawidd0811/neofetch
 ppa:japaneseteam/ppa
 ppa:budgie-remix/ppa
