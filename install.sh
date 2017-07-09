@@ -55,6 +55,7 @@ neovim
 albert
 dconf-editor
 kdenlive
+chrome-gnome-shell
 EOS`
 downloadurls=`cat << EOS
 https://www.google.co.jp/chrome/browser/desktop/index.html
