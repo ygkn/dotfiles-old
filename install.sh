@@ -14,7 +14,7 @@ ppa:webupd8team/brackets
 ppa:stebbins/handbrake-releases
 EOS`
 apps=`cat << EOS
-handbreak
+handbrake
 papirus-icon-theme
 gparted
 kazam
